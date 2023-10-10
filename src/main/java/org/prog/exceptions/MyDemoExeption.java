@@ -3,6 +3,7 @@ package org.prog.exceptions;
 public class MyDemoExeption {
     public MyDemoExeption() {
     }
+    //
     public static void main(String[] args) {
         try {
             String str = null;
