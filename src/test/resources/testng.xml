@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Selenium" verbose="1">
+    <test name="Google Regression">
+        <classes>
+            <class name="org.prog.tests.MyTest"/>
+        </classes>
+    </test>
+    <test name="Google Regression 2">
+        <classes>
+            <class name="org.prog.tests.AnotherTest"/>
+        </classes>
+    </test>
+</suite>
