@@ -21,7 +21,7 @@ public class PolyDemo {
         gasCar.goTo("Kyiv", "Odessa");
         gasCar.goTo("Kharkiv", "Uman", "Kyiv");
         gasTruck.goTo("Lviv", "Odessa", "Ivano-Frankivs'k", 5);
-        gasCar.goTo("Odessa", "Kyiv", "Uman", 3, 120);
+        gasCar.goTo("Odessa", "Kyiv", "Uman", 3, 12)0;
 
     }
 
