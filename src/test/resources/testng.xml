@@ -3,12 +3,7 @@
 <suite name="Selenium" verbose="1">
     <test name="Google Regression">
         <classes>
-            <class name="org.prog.tests.MyTest"/>
-        </classes>
-    </test>
-    <test name="Google Regression 2">
-        <classes>
-            <class name="org.prog.tests.AnotherTest"/>
+            <class name="org.prog.tests.WebTests"/>
         </classes>
     </test>
 </suite>
