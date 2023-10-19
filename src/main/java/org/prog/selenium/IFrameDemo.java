@@ -16,9 +16,9 @@ public class IFrameDemo {
         WebDriver driver = new ChromeDriver();
         try {
             driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe");
-            new WebDriverWait(driver, Duration.ofSeconds(30L))
-                    .until(ExpectedConditions.visibilityOfElementLocated(By.id("accept-choices")))
-                    .click();
+//            new WebDriverWait(driver, Duration.ofSeconds(30L))
+//                    .until(ExpectedConditions.visibilityOfElementLocated(By.id("accept-choices")))
+//                    .click();
             WebElement resultIframe = driver.findElement(By.xpath("//iframe[@id='iframeResult']"));
             driver.switchTo().frame(resultIframe);
 
