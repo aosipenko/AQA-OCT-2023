@@ -10,16 +10,12 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GooglePage {
+public class GooglePage extends AbstractPage {
 
-    private final WebDriver driver;
+    private final static String URL = "https://google.com/";
 
     public GooglePage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void loadPage() {
-        driver.get("https://google.com/");
+        super(driver, URL);
     }
 
     public void setSearchValue(String value) {

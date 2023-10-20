@@ -1,5 +1,6 @@
 package org.prog.tests;
 
+import org.prog.pages.AbstractPage;
 import org.testng.annotations.*;
 
 public class MyTest {

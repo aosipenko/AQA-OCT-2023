@@ -6,12 +6,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class WikiPage {
+public class WikiPage extends AbstractPage {
 
-    private final WebDriver driver;
+    private final static String URL = "https://wikipedia.org/";
 
     public WikiPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver, URL);
     }
 
     public boolean isPageLoaded() {
