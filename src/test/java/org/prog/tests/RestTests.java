@@ -56,8 +56,6 @@ public class RestTests {
         SearchResultsDto dto = RestAssured
                 .given()
                 .queryParam("results", "3")
-                //TODO: add location DTO
-// TODO:        .queryParam("inc", "gender,name,nat,location")
                 .queryParam("inc", "gender,name,nat")
                 .queryParam("noinfo")
                 .get("https://randomuser.me/api/")
@@ -67,7 +65,7 @@ public class RestTests {
                 .extract()
                 .body()
                 .as(SearchResultsDto.class);
-//TODO: print timezone.description
+
         System.out.println(dto);
         Assert.assertTrue(dto
                 .getResults()
