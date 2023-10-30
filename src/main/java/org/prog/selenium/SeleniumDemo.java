@@ -1,30 +1,29 @@
 package org.prog.selenium;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class SeleniumDemo {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
-        driver.get("https://google.com/");
-        List<WebElement> buttons = driver.findElements(By.xpath("//button"));
-        if (buttons.size() == 5) {
-            //we see cookies!
-            WebElement element = buttons.get(3);
-            element.click();
-        }
-        WebElement searchInput = driver.findElement(By.name("q"));
-        searchInput.sendKeys("Bill Gates");
-        searchInput.click();
-        Thread.sleep(1500);
-        WebElement searchBtn = driver.findElements(By.xpath("//input[@name='btnK']")).get(0);
-        searchBtn.click();
-        driver.quit();
-    }
+        try {
+            WebElement element = driver.findElement(By.className("cart-product__price cart-product__price--red"));
+            String value = element.getText(); //8&nbsp999
+            String updatedValue = value.replace("&nbsp;", ""); //8999
+            Integer.valueOf(updatedValue);
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
 
+        } finally {
+            driver.quit();
+        }
+    }
 }
