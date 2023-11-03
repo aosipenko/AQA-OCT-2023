@@ -19,6 +19,12 @@ import org.testng.annotations.BeforeSuite;
 public class CucumberTestRunner extends AbstractTestNGCucumberTests {
 
     private WebDriver driver;
+//
+//    @Override
+//    @DataProvider(parallel = true)
+//    public Object[][] scenarios() {
+//        return super.scenarios();
+//    }
 
     @BeforeSuite
     public void setUp() {
