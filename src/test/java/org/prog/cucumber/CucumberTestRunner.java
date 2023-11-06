@@ -7,8 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.prog.cucumber.steps.WebSteps;
 import org.prog.pages.GooglePage;
 import org.prog.pages.WikiPage;
+import org.prog.util.WebDriverFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+
+import java.net.MalformedURLException;
 
 @CucumberOptions(features = "src/test/resources/features",
         glue = "org.prog.cucumber",
@@ -27,8 +30,8 @@ public class CucumberTestRunner extends AbstractTestNGCucumberTests {
 //    }
 
     @BeforeSuite
-    public void setUp() {
-        driver = new ChromeDriver();
+    public void setUp() throws MalformedURLException {
+        driver = WebDriverFactory.getDriver();
         WebSteps.googlePage = new GooglePage(driver);
         WebSteps.wikiPage = new WikiPage(driver);
     }

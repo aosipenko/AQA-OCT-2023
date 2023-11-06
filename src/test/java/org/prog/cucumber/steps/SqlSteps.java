@@ -9,17 +9,13 @@ import java.sql.*;
 
 public class SqlSteps {
 
+    private final static String JENKINS = "jenkins";
+
     public static SearchResultsDto searchResultsDto;
 
     @Given("I store those persons in DB")
     public void storeInDB() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/db",
-                "user",
-                "password"
-        );
-
+        Connection connection = getConnection();
         Statement statement = connection.createStatement();
 
         String sqlPattern = "INSERT INTO Persons (FirstName, LastName, Title, Gender, Nat) " +
@@ -44,13 +40,7 @@ public class SqlSteps {
 
     @Given("I store persons from {string} in DB")
     public void storeInDBFromHolder(String alias) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/db",
-                "user",
-                "password"
-        );
-
+        Connection connection = getConnection();
         Statement statement = connection.createStatement();
 
         String sqlPattern = "INSERT INTO Persons (FirstName, LastName, Title, Gender, Nat) " +
@@ -77,13 +67,7 @@ public class SqlSteps {
 
     @Given("I pick a random person from DB")
     public void pickRandomPerson() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/db",
-                "user",
-                "password"
-        );
-
+        Connection connection = getConnection();
         Statement statement = connection.createStatement();
 
         ResultSet resultSet = statement.executeQuery("SELECT * FROM Persons ORDER BY RAND() LIMIT 1");
@@ -98,13 +82,7 @@ public class SqlSteps {
 
     @Given("I pick a random person from DB as {string}")
     public void pickRandomPersonWithHolder(String alias) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/db",
-                "user",
-                "password"
-        );
-
+        Connection connection = getConnection();
         Statement statement = connection.createStatement();
 
         ResultSet resultSet = statement.executeQuery("SELECT * FROM Persons ORDER BY RAND() LIMIT 1");
@@ -116,5 +94,23 @@ public class SqlSteps {
         resultSet.close();
         statement.close();
         connection.close();
+    }
+
+    private Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String driverType = System.getProperty("driver.type");
+        if (JENKINS.equals(driverType)) {
+            return DriverManager.getConnection(
+                    "jdbc:mysql://mysql-db-1:3306/db",
+                    "user",
+                    "password"
+            );
+        } else {
+            return DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/db",
+                    "user",
+                    "password"
+            );
+        }
     }
 }
