@@ -1,21 +1,22 @@
-#Feature: test combination of API, SQL and Selenium
-#
-#  Background:
-#    Given I load google page
-#
-#  Scenario Outline: retrieve and store and search for random user
-#    Given I retrieve <amount> random users with API
-#    Given I store those persons in DB
-#    Given I pick a random person from DB
-#    When I google for that person
-#    Then I see that persons name in search results
-#    Then I check my holder "userDto"
-#    Then I check my holder "randomUser"
-#    Examples:
-#      | amount |
-#      | 1      |
-#      | 2      |
-#      | 3      |
+Feature: test combination of API, SQL and Selenium
+
+  Background:
+    Given I load google page
+
+  @severity=trivial
+  Scenario Outline: retrieve and store and search for random user
+    Given I retrieve <amount> random users with API
+    Given I store those persons in DB
+    Given I pick a random person from DB
+    When I google for that person
+    Then I see that persons name in search results
+    Then I check my holder "userDto"
+    Then I check my holder "randomUser"
+    Examples:
+      | amount |
+      | 1      |
+      | 2      |
+      | 3      |
 
 
 #  Scenario Outline: retrieve and store and search for random user
