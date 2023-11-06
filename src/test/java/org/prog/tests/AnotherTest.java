@@ -12,16 +12,19 @@ public class AnotherTest {
     }
 
     @Test
+//    @Severity(SeverityLevel.TRIVIAL)
     public void smth() {
         System.out.println("this is test");
     }
 
     @Test
+//    @Severity(SeverityLevel.CRITICAL)
     public void smth2() {
         System.out.println("this is test");
     }
 
     @Test
+//    @Severity(SeverityLevel.MINOR)
     public void smth3() {
         System.out.println("this is test");
     }
@@ -29,6 +32,11 @@ public class AnotherTest {
     @AfterMethod
     public void afterTest() {
         System.out.println("---------------------------");
+    }
+
+    //    @Step("This is some step")
+    private void smth23() {
+        System.out.println();
     }
 
 }

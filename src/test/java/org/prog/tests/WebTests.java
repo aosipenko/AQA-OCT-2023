@@ -17,8 +17,8 @@ public class WebTests {
     @BeforeSuite
     public void setUp() {
         driver = new ChromeDriver();
-        googlePage = new GooglePage(driver); // browser # 1
-        wikiPage = new WikiPage(driver); // browser # 2
+        googlePage = new GooglePage(driver);
+        wikiPage = new WikiPage(driver);
     }
 
     @BeforeMethod
