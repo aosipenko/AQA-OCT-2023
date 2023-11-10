@@ -9,7 +9,6 @@ import org.prog.dto.SearchResultsDto;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 
 public class ApacheTests {
 

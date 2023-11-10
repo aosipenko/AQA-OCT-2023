@@ -5,8 +5,12 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.prog.dto.SearchResultsDto;
 import org.prog.util.DataHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ApiSteps {
+
+    @Autowired
+    private DataHolder dataHolder;
 
     @Given("I retrieve {int} random users with API")
     public void retrieveUsers(int amount) {
@@ -39,6 +43,6 @@ public class ApiSteps {
                 .body()
                 .as(SearchResultsDto.class);
 
-        DataHolder.getInstance().put(alias, dto);
+        dataHolder.put(alias, dto);
     }
 }

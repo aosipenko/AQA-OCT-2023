@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.prog.pages.GooglePage;
 import org.prog.pages.WikiPage;
+import org.prog.util.WebDriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.net.MalformedURLException;
 
 public class WebTests {
 
@@ -15,10 +18,11 @@ public class WebTests {
     private WikiPage wikiPage;
 
     @BeforeSuite
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
+        WebDriverFactory webDriverFactory = new WebDriverFactory();
         driver = new ChromeDriver();
-        googlePage = new GooglePage(driver);
-        wikiPage = new WikiPage(driver);
+        googlePage = new GooglePage(webDriverFactory);
+        wikiPage = new WikiPage(webDriverFactory);
     }
 
     @BeforeMethod

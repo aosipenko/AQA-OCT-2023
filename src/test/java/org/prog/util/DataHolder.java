@@ -1,29 +1,16 @@
 package org.prog.util;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 
+@Component
 public class DataHolder {
-
-    /**
-     * ################################
-     * ################################
-     * ################################
-     * ########DataHolder (instance)###
-     * ########holder##################
-     * ################################
-     * ################################
-     */
-
-    private final static DataHolder instance = new DataHolder();
 
     private final HashMap<String, Object> holder;
 
-    private DataHolder() {
+    public DataHolder() {
         holder = new HashMap<>();
-    }
-
-    public static DataHolder getInstance() {
-        return instance;
     }
 
     public void put(String key, Object value) {

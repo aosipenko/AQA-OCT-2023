@@ -6,14 +6,22 @@ import io.cucumber.java.en.When;
 import org.prog.pages.GooglePage;
 import org.prog.pages.WikiPage;
 import org.prog.util.DataHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 
 import java.util.List;
 
 public class WebSteps {
 
-    public static GooglePage googlePage;
-    public static WikiPage wikiPage;
+    @Autowired
+    public GooglePage googlePage;
+
+    @Autowired
+    public WikiPage wikiPage;
+
+
+    @Autowired
+    private DataHolder dataHolder;
 
     public static String searchValue;
 
@@ -35,7 +43,7 @@ public class WebSteps {
 
     @When("I google for person {string}")
     public void performSearchFromHolder(String alias) {
-        performSearch((String) DataHolder.getInstance().get(alias));
+        performSearch((String) dataHolder.get(alias));
     }
 
     @Then("I can see {string} in search results")
@@ -50,7 +58,7 @@ public class WebSteps {
 
     @Then("I see that person {string} name in search results")
     public void checkSearchHeadersFromHolder(String alias) {
-        verifySearchResults((String) DataHolder.getInstance().get(alias));
+        verifySearchResults((String) dataHolder.get(alias));
     }
 
     private void performSearch(String value) {
